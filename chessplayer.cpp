@@ -2,7 +2,6 @@
 #include<vector>
 #include<utility>
 #include<string>
-#include<time.h>
 using namespace std;
 int ischeckbywhite(int i,int j,vector<vector<string>>&board);
 int ischeckbyblack(int i,int j,vector<vector<string>>&board);
@@ -198,12 +197,6 @@ vector<pair<int,int>> whereblackqueencango(vector<vector<string>>& board);
 int cancheckbeblockedbywhite(vector<vector<string>>& board);
 int cancheckbeblockedbyblack(vector<vector<string>>& board);
 
-int ischanceblack(int chancecounter){
-    
-}
-int ischancewhite(int chancecounter){
-
-}
 int iscapturablebyblackpawn(int i,int j,vector<vector<string>>&board){
     if(i+1<=7&&j+1<=7){
         if(board[i+1][j+1].substr(0,9)=="blackpawn"){
@@ -11298,58 +11291,6 @@ vector<vector<string>> chesssimulatorforblack(vector<vector<string>>&board){
             }
         }
     return board;
-}
-// Helper to generate random boards and test them
-void runWhiteChessFuzzer(int num_tests) {
-    cout << "--- Starting White Side Fuzzer [" << num_tests << " boards] ---" << endl;
-    
-    vector<string> pieces = {
-        "whitepawn1", "whiterook1", "whiteknight1", "whitebishop1", "whitequeen",
-        "blackpawn1", "blackrook1", "blackknight1", "blackbishop1", "blackqueen"
-    };
-
-    srand(time(0));
-
-    for(int t = 1; t <= num_tests; t++) {
-        vector<vector<string>> test_board(8, vector<string>(8, "E"));
-
-        // 1. Mandatory Kings (Prevents v[0] crashes)
-        test_board[rand() % 8][rand() % 8] = "whiteking";
-        int bk_r, bk_c;
-        do { bk_r = rand() % 8; bk_c = rand() % 8; } while(test_board[bk_r][bk_c] != "E");
-        test_board[bk_r][bk_c] = "blackking";
-
-        // 2. Random Noise (Sprinkle 5-20 pieces)
-        int extra = rand() % 15 + 5;
-        for(int p = 0; p < extra; p++) {
-            int r = rand() % 8, c = rand() % 8;
-            if(test_board[r][c] == "E") {
-                test_board[r][c] = pieces[rand() % pieces.size()];
-            }
-        }
-
-        // 3. Simulation Execution
-        // We use copies so the fuzzer doesn't accidentally modify the source board
-        vector<vector<string>> white_sim_copy = test_board;
-        vector<vector<string>> white_save_copy = test_board;
-
-        try {
-            // Testing your specific white-side logic
-            chesssimulatorforwhite(white_sim_copy);
-            checksaverbywhite(white_save_copy);
-        } catch (...) {
-            // If your environment supports catch, this helps. 
-            // Otherwise, the standard segfault will still stop the program.
-            cout << "CRASH DETECTED ON BOARD #" << t << endl;
-            return;
-        }
-
-        if(t % 1000 == 0) {
-            cout << "Checked " << t << " white scenarios..." << endl;
-        }
-    }
-    
-    cout << "Fuzzer completed! White simulator logic is stable." << endl;
 }
 int main(){
     vector<vector<string>> board = {
