@@ -11346,16 +11346,17 @@ void runWhiteChessFuzzer(int num_tests) {
     cout << "Fuzzer completed! White simulator logic is stable." << endl;
 }
 int main(){
-    vector<vector<string>>board={
-        {"whiteking","E","E","E","E","E","E","E"},
-        {"E","E","blackqueen","E","E","E","E","E"},
-        {"E","E","E","E","E","E","E","E"},
-        {"E","E","E","E","E","E","E","E"},
-        {"E","E","E","E","E","E","E","E"},
-        {"E","E","E","E","E","E","E","E"},
-        {"E","E","E","E","E","E","E","E"},
-        {"E","E","E","E","E","E","E","blackking"}
-    };
+    vector<vector<string>> board = {
+    {"whiterook1", "whiteknight1", "whitebishop1", "whitequeen", "whiteking", "whitebishop2", "whiteknight2", "whiterook2"},
+    {"whitepawn1", "whitepawn2", "whitepawn3", "whitepawn4", "whitepawn5", "whitepawn6", "whitepawn7", "whitepawn8"},
+    {"E", "E", "E", "E", "E", "E", "E", "E"},
+    {"E", "E", "E", "E", "E", "E", "E", "E"},
+    {"E", "E", "E", "E", "E", "E", "E", "E"},
+    {"E", "E", "E", "E", "E", "E", "E", "E"},
+    {"blackpawn1", "blackpawn2", "blackpawn3", "blackpawn4", "blackpawn5", "blackpawn6", "blackpawn7", "blackpawn8"},
+    {"blackrook1", "blackknight1", "blackbishop1", "blackqueen", "blackking", "blackbishop2", "blackknight2", "blackrook2"}
+};
+
 
     board=chesssimulatorforwhite(board);
     for(int i=0;i<8;i++){
