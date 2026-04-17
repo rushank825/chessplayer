@@ -4679,27 +4679,31 @@ int ismovablepawnblack(int i,int j,vector<vector<string>>&board){
             boardtemp[i][j]="E";
             boardtemp[i-1][j]="blackpawn";
             vector<pair<int,int>>v=wheredoesblackkingexist(board);
-            if(iswhite(board[i-1][j])&&!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
             return true;
             }
         }
     }
     if(i-1>=0&&j-1>=0){
+        if(iswhite(board[i-1][j-1])){
         vector<vector<string>>boardtemp=board;
         boardtemp[i][j]="E";
         boardtemp[i-1][j-1]="blackpawn";
         vector<pair<int,int>>v=wheredoesblackkingexist(board);
-        if(iswhite(board[i-1][j-1])&&!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+        if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
             return true;
+        }
         }
     }
     if(i-1>=0&&j+1<=7){
+        if(iswhite(board[i-1][j+1])){
         vector<vector<string>>boardtemp=board;
         boardtemp[i][j]="E";
         boardtemp[i-1][j+1]="blackpawn";
         vector<pair<int,int>>v=wheredoesblackkingexist(board);
-        if(iswhite(board[i-1][j+1])&&!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+        if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
             return true;
+        }
         }
     }
     return false;
@@ -4710,7 +4714,7 @@ int ismovableknightblack(int i,int j,vector<vector<string>>&board){
         boardtemp[i][j]="E";
         boardtemp[i-1][j+2]="blackknight";
         vector<pair<int,int>>v=wheredoesblackkingexist(board);
-        if(iswhite(board[i-1][j+2])&&!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+        if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
             return true;
         }
     }
@@ -4719,7 +4723,7 @@ int ismovableknightblack(int i,int j,vector<vector<string>>&board){
         boardtemp[i][j]="E";
         boardtemp[i+1][j+2]="blackknight";
         vector<pair<int,int>>v=wheredoesblackkingexist(board);
-        if(iswhite(board[i+1][j+2])&&!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+        if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
             return true;
         }
     }
@@ -4728,7 +4732,7 @@ int ismovableknightblack(int i,int j,vector<vector<string>>&board){
         boardtemp[i][j]="E";
         boardtemp[i-1][j-2]="blackknight";
         vector<pair<int,int>>v=wheredoesblackkingexist(board);
-        if(iswhite(board[i-1][j-2])&&!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+        if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
             return true;
         }
     }
@@ -4737,7 +4741,7 @@ int ismovableknightblack(int i,int j,vector<vector<string>>&board){
         boardtemp[i][j]="E";
         boardtemp[i+1][j-2]="blackknight";
         vector<pair<int,int>>v=wheredoesblackkingexist(board);
-        if(iswhite(board[i+1][j-2])&&!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+        if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
             return true;
         }
     }
@@ -4746,7 +4750,7 @@ int ismovableknightblack(int i,int j,vector<vector<string>>&board){
         boardtemp[i][j]="E";
         boardtemp[i+2][j+1]="blackknight";
         vector<pair<int,int>>v=wheredoesblackkingexist(board);
-        if(iswhite(board[i+2][j+1])&&!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+        if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
             return true;
         }
     }
@@ -4755,7 +4759,7 @@ int ismovableknightblack(int i,int j,vector<vector<string>>&board){
         boardtemp[i][j]="E";
         boardtemp[i+2][j-1]="blackknight";
         vector<pair<int,int>>v=wheredoesblackkingexist(board);
-        if(iswhite(board[i+2][j-1])&&!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+        if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
             return true;
         }
     }
@@ -4764,7 +4768,7 @@ int ismovableknightblack(int i,int j,vector<vector<string>>&board){
         boardtemp[i][j]="E";
         boardtemp[i-2][j+1]="blackknight";
         vector<pair<int,int>>v=wheredoesblackkingexist(board);
-        if(iswhite(board[i-2][j+1])&&!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+        if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
             return true;
         }
     }
@@ -4773,7 +4777,7 @@ int ismovableknightblack(int i,int j,vector<vector<string>>&board){
         boardtemp[i][j]="E";
         boardtemp[i-2][j-1]="blackknight";
         vector<pair<int,int>>v=wheredoesblackkingexist(board);
-        if(iswhite(board[i-2][j-1])&&!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+        if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
             return true;
         }
     }
@@ -5025,13 +5029,15 @@ int ismovablekingblack(int i,int j,vector<vector<string>>&board){
 }
 int ismovablepawnwhite(int i,int j,vector<vector<string>>&board){
     if(i+1<=7){
+        if(board[i+1][j]=="E"){
             vector<vector<string>>boardtemp=board;
             boardtemp[i][j]="E";
             boardtemp[i+1][j]="whitepawn";
             vector<pair<int,int>>v=wheredoeswhitekingexist(board);
-            if(iswhite(board[i+1][j])&&!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return true;
             }
+        }
     }
     if(i+1<=7&&j-1>=0){
         if(isblack(board[i+1][j-1])){
@@ -5039,7 +5045,7 @@ int ismovablepawnwhite(int i,int j,vector<vector<string>>&board){
             boardtemp[i][j]="E";
             boardtemp[i+1][j-1]="whitepawn";
             vector<pair<int,int>>v=wheredoeswhitekingexist(board);
-            if(iswhite(board[i+1][j-1])&&!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return true;
             }
         }
@@ -5050,7 +5056,7 @@ int ismovablepawnwhite(int i,int j,vector<vector<string>>&board){
             boardtemp[i][j]="E";
             boardtemp[i+1][j+1]="whitepawn";
             vector<pair<int,int>>v=wheredoeswhitekingexist(board);
-            if(iswhite(board[i+1][j+1])&&!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return true;
             }
         }
@@ -5063,7 +5069,7 @@ int ismovableknightwhite(int i,int j,vector<vector<string>>&board){
             boardtemp[i][j]="E";
             boardtemp[i-1][j+2]="whiteknight";
             vector<pair<int,int>>v=wheredoeswhitekingexist(board);
-            if(iswhite(board[i-1][j+2])&&!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return true;
             }
     }
@@ -5072,7 +5078,7 @@ int ismovableknightwhite(int i,int j,vector<vector<string>>&board){
             boardtemp[i][j]="E";
             boardtemp[i+1][j+2]="whiteknight";
             vector<pair<int,int>>v=wheredoeswhitekingexist(board);
-            if(iswhite(board[i+1][j+2])&&!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return true;
             }
     }
@@ -5081,7 +5087,7 @@ int ismovableknightwhite(int i,int j,vector<vector<string>>&board){
             boardtemp[i][j]="E";
             boardtemp[i-1][j-2]="whiteknight";
             vector<pair<int,int>>v=wheredoeswhitekingexist(board);
-            if(iswhite(board[i-1][j-2])&&!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return true;
             }
     }
@@ -5090,7 +5096,7 @@ int ismovableknightwhite(int i,int j,vector<vector<string>>&board){
             boardtemp[i][j]="E";
             boardtemp[i+1][j-2]="whiteknight";
             vector<pair<int,int>>v=wheredoeswhitekingexist(board);
-            if(iswhite(board[i+1][j-2])&&!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return true;
             }
     }
@@ -5099,7 +5105,7 @@ int ismovableknightwhite(int i,int j,vector<vector<string>>&board){
             boardtemp[i][j]="E";
             boardtemp[i+2][j+1]="whiteknight";
             vector<pair<int,int>>v=wheredoeswhitekingexist(board);
-            if(iswhite(board[i+2][j+1])&&!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return true;
             }
     }
@@ -5108,7 +5114,7 @@ int ismovableknightwhite(int i,int j,vector<vector<string>>&board){
             boardtemp[i][j]="E";
             boardtemp[i+2][j-1]="whiteknight";
             vector<pair<int,int>>v=wheredoeswhitekingexist(board);
-            if(iswhite(board[i+2][j-1])&&!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return true;
             }
     }
@@ -5117,7 +5123,7 @@ int ismovableknightwhite(int i,int j,vector<vector<string>>&board){
             boardtemp[i][j]="E";
             boardtemp[i-2][j+1]="whiteknight";
             vector<pair<int,int>>v=wheredoeswhitekingexist(board);
-            if(iswhite(board[i-2][j+1])&&!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return true;
             }
     }
@@ -5126,7 +5132,7 @@ int ismovableknightwhite(int i,int j,vector<vector<string>>&board){
             boardtemp[i][j]="E";
             boardtemp[i-2][j-1]="whiteknight";
             vector<pair<int,int>>v=wheredoeswhitekingexist(board);
-            if(iswhite(board[i-2][j-1])&&!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return true;
             }
     }
