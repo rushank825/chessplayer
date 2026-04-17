@@ -4286,7 +4286,7 @@ int ischeckbyblack(int i,int j,vector<vector<string>>&board){
     }
     return false;
 }
-int isstalematebywhite(int i,int j,vector<vector<string>>&board){
+int isstalematebyblack(int i,int j,vector<vector<string>>&board){
     vector<pair<int,int>>v=wheredoesblackkingexist(board);
     if(ismovablekingblack(v[0].first,v[0].second,board)){
         return false;
@@ -4297,110 +4297,183 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[0].first][v1[0].second]="blackpawn1";
+            boardtemp[v1[k].first][v1[k].second]="blackpawn1";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackpawn2exist(board)){
         vector<pair<int,int>>v1=wheredoesblackpawn2exist(board);
         vector<pair<int,int>>v2=whereblackpawn2cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackpawn2";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackpawn3exist(board)){
         vector<pair<int,int>>v1=wheredoesblackpawn3exist(board);
         vector<pair<int,int>>v2=whereblackpawn3cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackpawn3";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackpawn4exist(board)){
         vector<pair<int,int>>v1=wheredoesblackpawn4exist(board);
         vector<pair<int,int>>v2=whereblackpawn4cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackpawn4";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackpawn5exist(board)){
         vector<pair<int,int>>v1=wheredoesblackpawn5exist(board);
         vector<pair<int,int>>v2=whereblackpawn5cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackpawn5";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackpawn6exist(board)){
         vector<pair<int,int>>v1=wheredoesblackpawn6exist(board);
         vector<pair<int,int>>v2=whereblackpawn6cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackpawn6";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackpawn7exist(board)){
         vector<pair<int,int>>v1=wheredoesblackpawn7exist(board);
         vector<pair<int,int>>v2=whereblackpawn7cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackpawn7";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackpawn8exist(board)){
         vector<pair<int,int>>v1=wheredoesblackpawn8exist(board);
         vector<pair<int,int>>v2=whereblackpawn8cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackpawn8";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackknight1exist(board)){
         vector<pair<int,int>>v1=wheredoesblackknight1exist(board);
         vector<pair<int,int>>v2=whereblackknight1cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackknight1";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackknight2exist(board)){
         vector<pair<int,int>>v1=wheredoesblackknight2exist(board);
         vector<pair<int,int>>v2=whereblackknight2cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackknight2";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackbishop1exist(board)){
         vector<pair<int,int>>v1=wheredoesblackbishop1exist(board);
         vector<pair<int,int>>v2=whereblackbishop1cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackbishop1";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackbishop2exist(board)){
         vector<pair<int,int>>v1=wheredoesblackbishop2exist(board);
         vector<pair<int,int>>v2=whereblackbishop2cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackbishop2";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackrook1exist(board)){
         vector<pair<int,int>>v1=wheredoesblackrook1exist(board);
         vector<pair<int,int>>v2=whereblackrook1cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackrook1";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackrook2exist(board)){
         vector<pair<int,int>>v1=wheredoesblackrook2exist(board);
         vector<pair<int,int>>v2=whereblackrook2cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackrook2";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doesblackqueenexist(board)){
         vector<pair<int,int>>v1=wheredoesblackqueenexist(board);
         vector<pair<int,int>>v2=whereblackqueencango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="blackqueen";
+            if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     return true;
 }
-int isstalematebyblack(int i,int j,vector<vector<string>>&board){
+int isstalematebywhite(int i,int j,vector<vector<string>>&board){
     vector<pair<int,int>>v=wheredoeswhitekingexist(board);
     if(ismovablekingwhite(v[0].first,v[0].second,board)){
         return false;
@@ -4408,106 +4481,181 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
     if(doeswhitepawn1exist(board)){
         vector<pair<int,int>>v1=wheredoeswhitepawn1exist(board);
         vector<pair<int,int>>v2=wherewhitepawn1cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whitepawn1";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhitepawn2exist(board)){
         vector<pair<int,int>>v1=wheredoeswhitepawn2exist(board);
         vector<pair<int,int>>v2=wherewhitepawn2cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whitepawn2";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhitepawn3exist(board)){
         vector<pair<int,int>>v1=wheredoeswhitepawn3exist(board);
         vector<pair<int,int>>v2=wherewhitepawn3cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whitepawn3";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhitepawn4exist(board)){
         vector<pair<int,int>>v1=wheredoeswhitepawn4exist(board);
         vector<pair<int,int>>v2=wherewhitepawn4cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whitepawn4";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhitepawn5exist(board)){
         vector<pair<int,int>>v1=wheredoeswhitepawn5exist(board);
         vector<pair<int,int>>v2=wherewhitepawn5cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whitepawn5";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhitepawn6exist(board)){
         vector<pair<int,int>>v1=wheredoeswhitepawn6exist(board);
         vector<pair<int,int>>v2=wherewhitepawn6cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whitepawn6";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhitepawn7exist(board)){
         vector<pair<int,int>>v1=wheredoeswhitepawn7exist(board);
         vector<pair<int,int>>v2=wherewhitepawn7cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whitepawn7";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhitepawn8exist(board)){
         vector<pair<int,int>>v1=wheredoeswhitepawn8exist(board);
         vector<pair<int,int>>v2=wherewhitepawn8cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whitepawn8";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhiteknight1exist(board)){
         vector<pair<int,int>>v1=wheredoeswhiteknight1exist(board);
         vector<pair<int,int>>v2=wherewhiteknight1cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whiteknight1";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhiteknight2exist(board)){
         vector<pair<int,int>>v1=wheredoeswhiteknight2exist(board);
         vector<pair<int,int>>v2=wherewhiteknight2cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whiteknight2";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhitebishop1exist(board)){
         vector<pair<int,int>>v1=wheredoeswhitebishop1exist(board);
         vector<pair<int,int>>v2=wherewhitebishop1cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whitebishop1";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhitebishop2exist(board)){
         vector<pair<int,int>>v1=wheredoeswhitebishop2exist(board);
         vector<pair<int,int>>v2=wherewhitebishop2cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whitebishop2";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhiterook1exist(board)){
         vector<pair<int,int>>v1=wheredoeswhiterook1exist(board);
         vector<pair<int,int>>v2=wherewhiterook1cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whiterook1";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhiterook2exist(board)){
         vector<pair<int,int>>v1=wheredoeswhiterook2exist(board);
         vector<pair<int,int>>v2=wherewhiterook2cango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whiterook2";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     if(doeswhitequeenexist(board)){
         vector<pair<int,int>>v1=wheredoeswhitequeenexist(board);
         vector<pair<int,int>>v2=wherewhitequeencango(board);
-        if(v2.size()>0){
-            return false;
+        for(int k=0;k<v2.size();k++){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[v1[0].first][v1[0].second]="E";
+            boardtemp[v1[k].first][v1[k].second]="whitequeen";
+            if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
+                return false;
+            }
         }
     }
     return true;
@@ -10636,7 +10784,7 @@ void checksaverbyblack(vector<vector<string>>&board){
 vector<vector<string>> chesssimulatorforwhite(vector<vector<string>>&board){
     vector<pair<int,int>>v1=wheredoeswhitekingexist(board);
     if(isstalematebywhite(v1[0].first,v1[0].second,board)){
-        cout<<"STALEMATE ,BLACK CANNOT MOVE"<<endl;
+        cout<<"STALEMATE ,WHITE CANNOT MOVE"<<endl;
         return board;
     }
     if(ischeckbyblack(v1[0].first,v1[0].second,board)){
@@ -10891,7 +11039,7 @@ vector<vector<string>> chesssimulatorforwhite(vector<vector<string>>&board){
 vector<vector<string>> chesssimulatorforblack(vector<vector<string>>&board){
     vector<pair<int,int>>v1=wheredoesblackkingexist(board);
     if(isstalematebyblack(v1[0].first,v1[0].second,board)){
-        cout<<"STALEMATE ,WHITE CANNOT MOVE"<<endl;
+        cout<<"STALEMATE ,BLACK CANNOT MOVE"<<endl;
         return board;
     }
     if(ischeckbywhite(v1[0].first,v1[0].second,board)){
@@ -11199,15 +11347,17 @@ void runWhiteChessFuzzer(int num_tests) {
 }
 int main(){
     vector<vector<string>>board={
-    {"E","E","E","E","E","E","E","blackrook1"},
-    {"E","E","E","E","E","E","E","E"},
-    {"E","E","E","E","E","E","E","E"},
-    {"E","E","E","E","E","E","whiteking","E"},
-    {"blackqueen","E","E","E","E","E","E","E"},
-    {"E","E","E","E","E","E","E","E"},
-    {"E","E","E","blackknight1","E","E","E","E"},
-    {"blackrook2","E","E","E","E","E","E","blackking"}};
-    board=chesssimulatorforblack(board);
+        {"whiteking","E","E","E","E","E","E","E"},
+        {"E","E","blackqueen","E","E","E","E","E"},
+        {"E","E","E","E","E","E","E","E"},
+        {"E","E","E","E","E","E","E","E"},
+        {"E","E","E","E","E","E","E","E"},
+        {"E","E","E","E","E","E","E","E"},
+        {"E","E","E","E","E","E","E","E"},
+        {"E","E","E","E","E","E","E","blackking"}
+    };
+
+    board=chesssimulatorforwhite(board);
     for(int i=0;i<8;i++){
         for(int j=0;j<8;j++){
             cout<<board[i][j]<<" ";
