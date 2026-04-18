@@ -1670,7 +1670,7 @@ int iscapturablebyblackrook1(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="blackrook1"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="blackrook1"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -1696,7 +1696,7 @@ int iscapturablebyblackrook1(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="blackrook1"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="blackrook1"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -1722,7 +1722,7 @@ int iscapturablebyblackrook1(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="blackrook1"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="blackrook1"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -1748,7 +1748,7 @@ int iscapturablebyblackrook1(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="blackrook1"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="blackrook1"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -1777,7 +1777,7 @@ int iscapturablebyblackrook2(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="blackrook2"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="blackrook2"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -1803,7 +1803,7 @@ int iscapturablebyblackrook2(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="blackrook2"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="blackrook2"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -1829,7 +1829,7 @@ int iscapturablebyblackrook2(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="blackrook2"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="blackrook2"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -1855,7 +1855,7 @@ int iscapturablebyblackrook2(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="blackrook2"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="blackrook2"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -1884,7 +1884,7 @@ int iscapturablebyblackbishop1(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,11)=="blackbishop1"){
+        if(v[k]!="E"&&v[k].substr(0,12)=="blackbishop1"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -1910,7 +1910,7 @@ int iscapturablebyblackbishop1(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,11)=="blackbishop1"){
+        if(v[k]!="E"&&v[k].substr(0,12)=="blackbishop1"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -1936,7 +1936,7 @@ int iscapturablebyblackbishop1(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,11)=="blackbishop1"){
+        if(v[k]!="E"&&v[k].substr(0,12)=="blackbishop1"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -1962,7 +1962,7 @@ int iscapturablebyblackbishop1(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,11)=="blackbishop1"){
+        if(v[k]!="E"&&v[k].substr(0,12)=="blackbishop1"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -1991,7 +1991,7 @@ int iscapturablebyblackbishop2(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,11)=="blackbishop2"){
+        if(v[k]!="E"&&v[k].substr(0,12)=="blackbishop2"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -2017,7 +2017,7 @@ int iscapturablebyblackbishop2(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,11)=="blackbishop2"){
+        if(v[k]!="E"&&v[k].substr(0,12)=="blackbishop2"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -2043,7 +2043,7 @@ int iscapturablebyblackbishop2(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,11)=="blackbishop2"){
+        if(v[k]!="E"&&v[k].substr(0,12)=="blackbishop2"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -2069,7 +2069,7 @@ int iscapturablebyblackbishop2(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,11)=="blackbishop2"){
+        if(v[k]!="E"&&v[k].substr(0,12)=="blackbishop2"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -2480,7 +2480,7 @@ int iscapturablebywhiterook1(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="whiterook1"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="whiterook1"){
         int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -2506,7 +2506,7 @@ int iscapturablebywhiterook1(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="whiterook1"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="whiterook1"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -2532,7 +2532,7 @@ int iscapturablebywhiterook1(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="whiterook1"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="whiterook1"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -2558,7 +2558,7 @@ int iscapturablebywhiterook1(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="whiterook1"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="whiterook1"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -2587,7 +2587,7 @@ int iscapturablebywhiterook2(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="whiterook2"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="whiterook2"){
         int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -2613,7 +2613,7 @@ int iscapturablebywhiterook2(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="whiterook2"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="whiterook2"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -2639,7 +2639,7 @@ int iscapturablebywhiterook2(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="whiterook2"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="whiterook2"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
@@ -2665,7 +2665,7 @@ int iscapturablebywhiterook2(int i,int j,vector<vector<string>>&board){
         }
     }
     for(int k=0;k<v.size();k++){
-        if(v[k]!="E"&&v[k].substr(0,9)=="whiterook2"){
+        if(v[k]!="E"&&v[k].substr(0,10)=="whiterook2"){
             int l=0;
             for(int z=0;z<k;z++){
                 if(v[z]=="E"){
