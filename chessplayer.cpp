@@ -8550,43 +8550,83 @@ vector<pair<int,int>> whereblackkingcango(vector<vector<string>>&board){
     int i=v[0].first;
     int j=v[0].second;
     if(i+1<=7){
-        if(!isattackedbywhite(i+1,j,board)&&!isblack(board[i+1][j])){
-            ans.push_back({i+1,j});
+        if(!isblack(board[i+1][j])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i+1][j]="blackking";
+            boardtemp[i][j]="E";
+            if(!ischeckbywhite(i+1,j,board)){
+                ans.push_back({i+1,j});
+            }
         }
     }
     if(i-1>=0){
-        if(!isattackedbywhite(i-1,j,board)&&!isblack(board[i-1][j])){
-            ans.push_back({i-1,j});
+        if(!isblack(board[i-1][j])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i-1][j]="blackking";
+            boardtemp[i][j]="E";
+            if(!ischeckbywhite(i-1,j,board)){
+                ans.push_back({i-1,j});
+            }
         }
     }
     if(j+1<=7){
-        if(!isattackedbywhite(i,j+1,board)&&!isblack(board[i][j+1])){
-            ans.push_back({i,j+1});
+        if(!isblack(board[i][j+1])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i][j+1]="blackking";
+            boardtemp[i][j]="E";
+            if(!ischeckbywhite(i,j+1,board)){
+                ans.push_back({i,j+1});
+            }
         }
     }
     if(j-1>=0){
-        if(!isattackedbywhite(i,j-1,board)&&!isblack(board[i][j-1])){
-            ans.push_back({i,j-1});
+        if(!isblack(board[i][j-1])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i][j-1]="blackking";
+            boardtemp[i][j]="E";
+            if(!ischeckbywhite(i,j-1,board)){
+                ans.push_back({i,j-1});
+            }
         }
     }
     if(i+1<=7&&j+1<=7){
-        if(!isattackedbywhite(i+1,j+1,board)&&!isblack(board[i+1][j+1])){
-            ans.push_back({i+1,j+1});
+        if(!isblack(board[i+1][j+1])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i+1][j+1]="blackking";
+            boardtemp[i][j]="E";
+            if(!ischeckbywhite(i+1,j+1,board)){
+                ans.push_back({i+1,j+1});
+            }
         }
     }
     if(i+1<=7&&j-1>=0){
-        if(!isattackedbywhite(i+1,j-1,board)&&!isblack(board[i+1][j-1])){
-            ans.push_back({i+1,j-1});
+        if(!isblack(board[i+1][j-1])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i+1][j-1]="blackking";
+            boardtemp[i][j]="E";
+            if(!ischeckbywhite(i+1,j-1,board)){
+                ans.push_back({i+1,j-1});
+            }
         }
     }
     if(i-1>=0&&j+1<=7){
-        if(!isattackedbywhite(i-1,j+1,board)&&!isblack(board[i-1][j+1])){
-            ans.push_back({i-1,j+1});
+        if(!isblack(board[i-1][j+1])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i-1][j+1]="blackking";
+            boardtemp[i][j]="E";
+            if(!ischeckbywhite(i-1,j+1,board)){
+                ans.push_back({i-1,j+1});
+            }
         }
     }
     if(i-1>=0&&j-1>=0){
-        if(!isattackedbywhite(i-1,j-1,board)&&!isblack(board[i-1][j-1])){
-            ans.push_back({i-1,j-1});
+        if(!isblack(board[i-1][j-1])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i-1][j-1]="blackking";
+            boardtemp[i][j]="E";
+            if(!ischeckbywhite(i-1,j-1,board)){
+                ans.push_back({i-1,j-1});
+            }
         }
     }
     return ans;
@@ -9282,43 +9322,83 @@ vector<pair<int,int>> wherewhitekingcango(vector<vector<string>>&board){
     int i=v[0].first;
     int j=v[0].second;
     if(i+1<=7){
-        if(!isattackedbyblack(i+1,j,board)&&!iswhite(board[i+1][j])){
-            ans.push_back({i+1,j});
+        if(!iswhite(board[i+1][j])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i+1][j]="whiteking";
+            boardtemp[i][j]="E";
+            if(!ischeckbyblack(i+1,j,board)){
+                ans.push_back({i+1,j});
+            }
         }
     }
     if(i-1>=0){
-        if(!isattackedbyblack(i-1,j,board)&&!iswhite(board[i-1][j])){
-            ans.push_back({i-1,j});
+        if(!iswhite(board[i-1][j])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i-1][j]="whiteking";
+            boardtemp[i][j]="E";
+            if(!ischeckbyblack(i-1,j,board)){
+                ans.push_back({i-1,j});
+            }
         }
     }
     if(j+1<=7){
-        if(!isattackedbyblack(i,j+1,board)&&!iswhite(board[i][j+1])){
-            ans.push_back({i,j+1});
+        if(!iswhite(board[i][j+1])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i][j+1]="whiteking";
+            boardtemp[i][j]="E";
+            if(!ischeckbyblack(i,j+1,board)){
+                ans.push_back({i,j+1});
+            }
         }
     }
     if(j-1>=0){
         if(!isattackedbyblack(i,j-1,board)&&!iswhite(board[i][j-1])){
-            ans.push_back({i,j-1});
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i][j-1]="whiteking";
+            boardtemp[i][j]="E";
+            if(!ischeckbyblack(i,j-1,board)){
+                ans.push_back({i,j-1});
+            }
         }
     }
     if(i+1<=7&&j+1<=7){
-        if(!isattackedbyblack(i+1,j+1,board)&&!iswhite(board[i+1][j+1])){
-            ans.push_back({i+1,j+1});
+        if(!iswhite(board[i+1][j+1])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i+1][j+1]="whiteking";
+            boardtemp[i][j]="E";
+            if(!ischeckbyblack(i+1,j+1,board)){
+                ans.push_back({i+1,j+1});
+            }
         }
     }
     if(i+1<=7&&j-1>=0){
-        if(!isattackedbyblack(i+1,j-1,board)&&!iswhite(board[i+1][j-1])){
-            ans.push_back({i+1,j-1});
+        if(!iswhite(board[i+1][j-1])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i+1][j-1]="whiteking";
+            boardtemp[i][j]="E";
+            if(!ischeckbyblack(i+1,j-1,board)){
+                ans.push_back({i+1,j-1});
+            }
         }
     }
     if(i-1>=0&&j+1<=7){
-        if(!isattackedbyblack(i-1,j+1,board)&&!iswhite(board[i-1][j+1])){
-            ans.push_back({i-1,j+1});
+        if(!iswhite(board[i-1][j+1])){
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i-1][j+1]="whiteking";
+            boardtemp[i][j]="E";
+            if(!ischeckbyblack(i-1,j+1,board)){
+                ans.push_back({i-1,j+1});
+            }
         }
     }
     if(i-1>=0&&j-1>=0){
         if(!isattackedbyblack(i-1,j-1,board)&&!iswhite(board[i-1][j-1])){
-            ans.push_back({i-1,j-1});
+            vector<vector<string>>boardtemp=board;
+            boardtemp[i-1][j-1]="whiteking";
+            boardtemp[i][j]="E";
+            if(!ischeckbyblack(i-1,j-1,board)){
+                ans.push_back({i-1,j-1});
+            }
         }
     }
     return ans;
