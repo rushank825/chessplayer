@@ -4226,43 +4226,99 @@ int isattackedbyblack(int i,int j,vector<vector<string>>&board){
 }
 int iscapturablebyblackking(int i,int j,vector<vector<string>>&board){
     if(i+1<=7){
-        if(board[i+1][j].substr(0,9)=="blackking"&&!isattackedbywhite(i+1,j,board)){
-            return true;
+        if(board[i+1][j].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i+1][j] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(i-1>=0){
-        if(board[i-1][j].substr(0,9)=="blackking"&&!isattackedbywhite(i-1,j,board)){
-            return true;
+        if(board[i-1][j].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i-1][j] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(j+1<=7){
-        if(board[i][j+1].substr(0,9)=="blackking"&&!isattackedbywhite(i,j+1,board)){
-            return true;
+        if(board[i][j+1].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j+1] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(j-1>=0){
-        if(board[i][j-1].substr(0,9)=="blackking"&&!isattackedbywhite(i,j-1,board)){
-            return true;
+        if(board[i][j-1].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j-1] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(i+1<=7&&j+1<=7){
-        if(board[i+1][j+1].substr(0,9)=="blackking"&&!isattackedbywhite(i+1,j+1,board)){
-            return true;
+        if(board[i+1][j+1].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i+1][j+1] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(i+1<=7&&j-1>=0){
-        if(board[i+1][j-1].substr(0,9)=="blackking"&&!isattackedbywhite(i+1,j-1,board)){
-            return true;
+        if(board[i+1][j-1].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i+1][j-1] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(i-1>=0&&j+1<=7){
-        if(board[i-1][j+1].substr(0,9)=="blackking"&&!isattackedbywhite(i-1,j+1,board)){
-            return true;
+        if(board[i-1][j+1].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i-1][j+1] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(i-1>=0&&j-1>=0){
-        if(board[i-1][j-1].substr(0,9)=="blackking"&&!isattackedbywhite(i-1,j-1,board)){
-            return true;
+        if(board[i-1][j-1].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i-1][j-1] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     return false;
@@ -4281,6 +4337,9 @@ int ischeckbyblack(int i,int j,vector<vector<string>>&board){
 }
 int isstalematebyblack(int i,int j,vector<vector<string>>&board){
     vector<pair<int,int>>v=wheredoesblackkingexist(board);
+    if (ischeckbywhite(v[0].first, v[0].second, board)) {
+        return false; 
+    }
     if(ismovablekingblack(v[0].first,v[0].second,board)){
         return false;
     }
@@ -4290,7 +4349,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackpawn1";
+            boardtemp[v2[k].first][v2[k].second]="blackpawn1";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4302,7 +4361,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackpawn2";
+            boardtemp[v2[k].first][v2[k].second]="blackpawn2";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4314,7 +4373,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackpawn3";
+            boardtemp[v2[k].first][v2[k].second]="blackpawn3";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4326,7 +4385,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackpawn4";
+            boardtemp[v2[k].first][v2[k].second]="blackpawn4";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4338,7 +4397,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackpawn5";
+            boardtemp[v2[k].first][v2[k].second]="blackpawn5";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4350,7 +4409,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackpawn6";
+            boardtemp[v2[k].first][v2[k].second]="blackpawn6";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4362,7 +4421,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackpawn7";
+            boardtemp[v2[k].first][v2[k].second]="blackpawn7";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4374,7 +4433,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackpawn8";
+            boardtemp[v2[k].first][v2[k].second]="blackpawn8";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4386,7 +4445,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackknight1";
+            boardtemp[v2[k].first][v2[k].second]="blackknight1";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4398,7 +4457,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackknight2";
+            boardtemp[v2[k].first][v2[k].second]="blackknight2";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4410,7 +4469,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackbishop1";
+            boardtemp[v2[k].first][v2[k].second]="blackbishop1";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4422,7 +4481,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackbishop2";
+            boardtemp[v2[k].first][v2[k].second]="blackbishop2";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4434,7 +4493,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackrook1";
+            boardtemp[v2[k].first][v2[k].second]="blackrook1";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4446,7 +4505,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackrook2";
+            boardtemp[v2[k].first][v2[k].second]="blackrook2";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4458,7 +4517,7 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="blackqueen";
+            boardtemp[v2[k].first][v2[k].second]="blackqueen";
             if(!ischeckbywhite(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4468,6 +4527,9 @@ int isstalematebyblack(int i,int j,vector<vector<string>>&board){
 }
 int isstalematebywhite(int i,int j,vector<vector<string>>&board){
     vector<pair<int,int>>v=wheredoeswhitekingexist(board);
+    if (ischeckbyblack(v[0].first, v[0].second, board)) {
+        return false; 
+    }
     if(ismovablekingwhite(v[0].first,v[0].second,board)){
         return false;
     }
@@ -4477,7 +4539,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whitepawn1";
+            boardtemp[v2[k].first][v2[k].second]="whitepawn1";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4489,7 +4551,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whitepawn2";
+            boardtemp[v2[k].first][v2[k].second]="whitepawn2";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4501,7 +4563,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whitepawn3";
+            boardtemp[v2[k].first][v2[k].second]="whitepawn3";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4513,7 +4575,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whitepawn4";
+            boardtemp[v2[k].first][v2[k].second]="whitepawn4";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4525,7 +4587,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whitepawn5";
+            boardtemp[v2[k].first][v2[k].second]="whitepawn5";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4537,7 +4599,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whitepawn6";
+            boardtemp[v2[k].first][v2[k].second]="whitepawn6";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4549,7 +4611,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whitepawn7";
+            boardtemp[v2[k].first][v2[k].second]="whitepawn7";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4561,7 +4623,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whitepawn8";
+            boardtemp[v2[k].first][v2[k].second]="whitepawn8";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4573,7 +4635,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whiteknight1";
+            boardtemp[v2[k].first][v2[k].second]="whiteknight1";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4585,7 +4647,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whiteknight2";
+            boardtemp[v2[k].first][v2[k].second]="whiteknight2";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4597,7 +4659,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whitebishop1";
+            boardtemp[v2[k].first][v2[k].second]="whitebishop1";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4609,7 +4671,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whitebishop2";
+            boardtemp[v2[k].first][v2[k].second]="whitebishop2";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4621,7 +4683,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whiterook1";
+            boardtemp[v2[k].first][v2[k].second]="whiterook1";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4633,7 +4695,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whiterook2";
+            boardtemp[v2[k].first][v2[k].second]="whiterook2";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4645,7 +4707,7 @@ int isstalematebywhite(int i,int j,vector<vector<string>>&board){
         for(int k=0;k<v2.size();k++){
             vector<vector<string>>boardtemp=board;
             boardtemp[v1[0].first][v1[0].second]="E";
-            boardtemp[v1[k].first][v1[k].second]="whitequeen";
+            boardtemp[v2[k].first][v2[k].second]="whitequeen";
             if(!ischeckbyblack(v[0].first,v[0].second,boardtemp)){
                 return false;
             }
@@ -4979,43 +5041,83 @@ int ismovablequeenblack(int i,int j,vector<vector<string>>&board){
 }
 int ismovablekingblack(int i,int j,vector<vector<string>>&board){
     if(j+1<=7){
-        if((board[i][j+1]=="E"||iswhite(board[i][j+1]))&&!isattackedbywhite(i,j+1,board)){
-            return true;
+        if((board[i][j+1]=="E"||iswhite(board[i][j+1]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i][j+1] = "blackking";
+            if (!isattackedbywhite(i, j+1, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(j-1>=0){
-        if((board[i][j-1]=="E"||iswhite(board[i][j-1]))&&!isattackedbywhite(i,j-1,board)){
-            return true;
+        if((board[i][j-1]=="E"||iswhite(board[i][j-1]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i][j-1] = "blackking";
+            if (!isattackedbywhite(i, j-1, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(i-1>=0&&j-1>=0){
-        if((board[i-1][j-1]=="E"||iswhite(board[i-1][j-1]))&&!isattackedbywhite(i-1,j-1,board)){
-            return true;
+        if((board[i-1][j-1]=="E"||iswhite(board[i-1][j-1]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i-1][j-1] = "blackking";
+            if (!isattackedbywhite(i-1, j-1, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(i-1>=0&&j+1<=7){
-        if((board[i-1][j+1]=="E"||iswhite(board[i-1][j+1]))&&!isattackedbywhite(i-1,j+1,board)){
-            return true;
+        if((board[i-1][j+1]=="E"||iswhite(board[i-1][j+1]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i-1][j+1] = "blackking";
+            if (!isattackedbywhite(i-1, j+1, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(i+1<=7&&j-1>=0){
-        if((board[i+1][j-1]=="E"||iswhite(board[i+1][j-1]))&&!isattackedbywhite(i+1,j-1,board)){
-            return true;
+        if((board[i+1][j-1]=="E"||iswhite(board[i+1][j-1]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i+1][j-1] = "blackking";
+            if (!isattackedbywhite(i+1, j-1, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(i+1<=7&&j+1<=7){
-        if((board[i+1][j+1]=="E"||iswhite(board[i+1][j+1]))&&!isattackedbywhite(i+1,j+1,board)){
-            return true;
+        if((board[i+1][j+1]=="E"||iswhite(board[i+1][j+1]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i+1][j+1] = "blackking";
+            if (!isattackedbywhite(i+1, j+1, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(i+1<=7){
-        if((board[i+1][j]=="E"||iswhite(board[i+1][j]))&&!isattackedbywhite(i+1,j,board)){
-            return true;
+        if((board[i+1][j]=="E"||iswhite(board[i+1][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i+1][j] = "blackking";
+            if (!isattackedbywhite(i+1, j, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(i-1>=0){
-        if((board[i-1][j]=="E"||iswhite(board[i-1][j]))&&!isattackedbywhite(i-1,j,board)){
-            return true;
+        if((board[i-1][j]=="E"||iswhite(board[i-1][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i-1][j] = "blackking";
+            if (!isattackedbywhite(i-1, j, boardtemp)) {
+                 return true; 
+            }
         }
     }
     return false;
@@ -5513,86 +5615,182 @@ int ismovablequeenwhite_(int i,int j,vector<vector<string>>&board){
 }
 int ismovablekingwhite(int i,int j,vector<vector<string>>&board){
     if(j+1<=7){
-        if((board[i][j+1]=="E"||isblack(board[i][j+1]))&&!isattackedbyblack(i,j+1,board)){
-            return true;
+        if((board[i][j+1]=="E"||isblack(board[i][j+1]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i][j+1] = "whiteking";
+            if (!isattackedbyblack(i, j+1, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(j-1>=0){
-        if((board[i][j-1]=="E"||isblack(board[i][j-1]))&&!isattackedbyblack(i,j-1,board)){
-            return true;
+        if((board[i][j-1]=="E"||isblack(board[i][j-1]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i][j-1] = "whiteking";
+            if (!isattackedbyblack(i, j-1, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(i-1>=0&&j-1>=0){
-        if((board[i-1][j-1]=="E"||isblack(board[i-1][j-1]))&&!isattackedbyblack(i-1,j-1,board)){
-            return true;
+        if((board[i-1][j-1]=="E"||isblack(board[i-1][j-1]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i-1][j-1] = "whiteking";
+            if (!isattackedbyblack(i-1, j-1, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(i-1>=0&&j+1<=7){
-        if((board[i-1][j+1]=="E"||isblack(board[i-1][j+1]))&&!isattackedbyblack(i-1,j+1,board)){
-            return true;
+        if((board[i-1][j+1]=="E"||isblack(board[i-1][j+1]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i-1][j+1] = "whiteking";
+            if (!isattackedbyblack(i-1, j+1, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(i+1<=7&&j-1>=0){
-        if((board[i+1][j-1]=="E"||isblack(board[i+1][j-1]))&&!isattackedbyblack(i+1,j-1,board)){
-            return true;
+        if((board[i+1][j-1]=="E"||isblack(board[i+1][j-1]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i+1][j-1] = "whiteking";
+            if (!isattackedbyblack(i+1, j-1, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(i+1<=7&&j+1<=7){
-        if((board[i+1][j+1]=="E"||isblack(board[i+1][j+1]))&&!isattackedbyblack(i+1,j+1,board)){
-            return true;
+        if((board[i+1][j+1]=="E"||isblack(board[i+1][j+1]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i+1][j+1] = "whiteking";
+            if (!isattackedbyblack(i+1, j+1, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(i+1<=7){
-        if((board[i+1][j]=="E"||isblack(board[i+1][j]))&&!isattackedbyblack(i+1,j,board)){
-            return true;
+        if((board[i+1][j]=="E"||isblack(board[i+1][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i+1][j] = "whiteking";
+            if (!isattackedbyblack(i+1, j, boardtemp)) {
+                 return true; 
+            }
         }
     }
     if(i-1>=0){
-        if((board[i-1][j]=="E"||isblack(board[i-1][j]))&&!isattackedbyblack(i-1,j,board)){
-            return true;
+        if((board[i-1][j]=="E"||isblack(board[i-1][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j] = "E";
+            boardtemp[i-1][j] = "whiteking";
+            if (!isattackedbyblack(i-1, j, boardtemp)) {
+                 return true; 
+            }
         }
     }
     return false;
 }
 int iscapturablebywhiteking(int i,int j,vector<vector<string>>&board){
 if(i+1<=7){
-        if(board[i+1][j].substr(0,9)=="whiteking"&&!isattackedbyblack(i+1,j,board)){
-            return true;
+        if(board[i+1][j].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i+1][j] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(i-1>=0){
-        if(board[i-1][j].substr(0,9)=="whiteking"&&!isattackedbyblack(i-1,j,board)){
-            return true;
+        if(board[i-1][j].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i-1][j] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(j+1<=7){
-        if(board[i][j+1].substr(0,9)=="whiteking"&&!isattackedbyblack(i,j+1,board)){
-            return true;
+        if(board[i][j+1].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j+1] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(j-1>=0){
-        if(board[i][j-1].substr(0,9)=="whiteking"&&!isattackedbyblack(i,j-1,board)){
-            return true;
+        if(board[i][j-1].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j-1] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(i+1<=7&&j+1<=7){
-        if(board[i+1][j+1].substr(0,9)=="whiteking"&&!isattackedbyblack(i+1,j+1,board)){
-            return true;
+        if(board[i+1][j+1].substr(0,9)=="whiteking"){
+           if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i+1][j+1] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(i+1<=7&&j-1>=0){
-        if(board[i+1][j-1].substr(0,9)=="whiteking"&&!isattackedbyblack(i+1,j-1,board)){
-            return true;
+        if(board[i+1][j-1].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i+1][j-1] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(i-1>=0&&j+1<=7){
-        if(board[i-1][j+1].substr(0,9)=="whiteking"&&!isattackedbyblack(i-1,j+1,board)){
-            return true;
+        if(board[i-1][j+1].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i-1][j+1] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     if(i-1>=0&&j-1>=0){
-        if(board[i-1][j-1].substr(0,9)=="whiteking"&&!isattackedbyblack(i-1,j-1,board)){
-            return true;
+        if(board[i-1][j-1].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i-1][j-1] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     return false;
@@ -6173,7 +6371,7 @@ int cancheckbeblockedbyblack(vector<vector<string>>&board){
         }
     return false;
 }
-int noofattacksbywhite(int i,int j,vector<vector<string>>&board){
+int noofattacksbyblack(int i,int j,vector<vector<string>>&board){
     int k=0;
     vector<int>v1=isattackfromblackpawn(i,j,board);
     vector<int>v2=isattackfromblackknight(i,j,board);
@@ -6201,7 +6399,7 @@ int noofattacksbywhite(int i,int j,vector<vector<string>>&board){
     }
     return k;
 }
-int noofattacksbyblack(int i,int j,vector<vector<string>>&board){
+int noofattacksbywhite(int i,int j,vector<vector<string>>&board){
     int k=0;
     vector<int>v1=isattackfromwhitepawn(i,j,board);
     vector<int>v2=isattackfromwhiteknight(i,j,board);
@@ -11294,16 +11492,15 @@ vector<vector<string>> chesssimulatorforblack(vector<vector<string>>&board){
 }
 int main(){
     vector<vector<string>> board = {
-    {"whiterook1", "whiteknight1", "whitebishop1", "whiteking", "whitequeen", "whitebishop2", "whiteknight2", "whiterook2"},
+    {"whiterook1", "whiteknight1", "whitebishop1", "whitequeen", "whiteking", "whitebishop2", "whiteknight2", "whiterook2"},
     {"whitepawn1", "whitepawn2", "whitepawn3", "whitepawn4", "whitepawn5", "whitepawn6", "whitepawn7", "whitepawn8"},
     {"E", "E", "E", "E", "E", "E", "E", "E"},
     {"E", "E", "E", "E", "E", "E", "E", "E"},
     {"E", "E", "E", "E", "E", "E", "E", "E"},
     {"E", "E", "E", "E", "E", "E", "E", "E"},
     {"blackpawn1", "blackpawn2", "blackpawn3", "blackpawn4", "blackpawn5", "blackpawn6", "blackpawn7", "blackpawn8"},
-    {"blackrook1", "blackknight1", "blackbishop1", "blackking", "blackqueen", "blackbishop2", "blackknight2", "blackrook2"}
+    {"blackrook1", "blackknight1", "blackbishop1", "blackqueen", "blackking", "blackbishop2", "blackknight2", "blackrook2"}
 };
-
 
     board=chesssimulatorforwhite(board);
     for(int i=0;i<8;i++){
