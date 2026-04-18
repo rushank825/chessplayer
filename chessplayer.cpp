@@ -3818,6 +3818,102 @@ int isattackedbywhite(int i,int j,vector<vector<string>>&board){
             }
         }
     }
+    if(i+1<=7){
+        if(board[i+1][j].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i+1][j] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(i-1>=0){
+        if(board[i-1][j].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i-1][j] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(j+1<=7){
+        if(board[i][j+1].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j+1] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(j-1>=0){
+        if(board[i][j-1].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j-1] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(i+1<=7&&j+1<=7){
+        if(board[i+1][j+1].substr(0,9)=="whiteking"){
+           if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i+1][j+1] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(i+1<=7&&j-1>=0){
+        if(board[i+1][j-1].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i+1][j-1] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(i-1>=0&&j+1<=7){
+        if(board[i-1][j+1].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i-1][j+1] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(i-1>=0&&j-1>=0){
+        if(board[i-1][j-1].substr(0,9)=="whiteking"){
+            if((board[i][j]=="E"||isblack(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i-1][j-1] = "E";
+            boardtemp[i][j] = "whiteking";
+            if (!isattackedbyblack(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
     return false;
 }
 int isattackedbyblack(int i,int j,vector<vector<string>>&board){
@@ -4220,6 +4316,102 @@ int isattackedbyblack(int i,int j,vector<vector<string>>&board){
             if(l==k){
                 return true;
             }
+        }
+    }
+    if(i+1<=7){
+        if(board[i+1][j].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i+1][j] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(i-1>=0){
+        if(board[i-1][j].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i-1][j] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(j+1<=7){
+        if(board[i][j+1].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j+1] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(j-1>=0){
+        if(board[i][j-1].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i][j-1] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(i+1<=7&&j+1<=7){
+        if(board[i+1][j+1].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i+1][j+1] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(i+1<=7&&j-1>=0){
+        if(board[i+1][j-1].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i+1][j-1] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(i-1>=0&&j+1<=7){
+        if(board[i-1][j+1].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i-1][j+1] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
+        }
+    }
+    if(i-1>=0&&j-1>=0){
+        if(board[i-1][j-1].substr(0,9)=="blackking"){
+            if((board[i][j]=="E"||iswhite(board[i][j]))){
+            vector<vector<string>> boardtemp = board;
+            boardtemp[i-1][j-1] = "E";
+            boardtemp[i][j] = "blackking";
+            if (!isattackedbywhite(i, j, boardtemp)) {
+                 return true; 
+            }
+        }
         }
     }
     return false;
